@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 export const PolkadotAccount = ({ setConnectedAccount }) => {
   const [accounts, setAccounts] = useState([]);
-  const [selectedAccountIndex, setSelectedAccountIndex] = useState(""); // Dodane do śledzenia indeksu wybranego konta
+  const [selectedAccountIndex, setSelectedAccountIndex] = useState("");
   const [extensionDetected, setExtensionDetected] = useState(false);
 
   useEffect(() => {
