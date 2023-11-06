@@ -28,13 +28,14 @@ export const PolkadotAccount = ({ setConnectedAccount }) => {
     const injector = await web3FromAddress(account.address);
     if (injector) {
       setConnectedAccount(account);
-      setSelectedAccountIndex(index); // Aktualizacja stanu po wybraniu konta
+      setSelectedAccountIndex(index);
     }
   };
 
-  const disconnectAccount = () => {
+  const disconnectAccount1 = () => {
     setConnectedAccount(null);
-    setSelectedAccountIndex(""); // Resetowanie stanu po rozłączeniu konta
+
+    document.querySelector("select").value = "";
   };
 
   return (
@@ -42,10 +43,7 @@ export const PolkadotAccount = ({ setConnectedAccount }) => {
       {!extensionDetected && <div>Please install the Polkadot.js extension.</div>}
       {extensionDetected && (
         <div>
-          <select
-            value={selectedAccountIndex} // Ustawienie wartości na podstawie stanu
-            onChange={(e) => connectAccount(e.target.value)}
-          >
+          <select value={selectedAccountIndex} onChange={(e) => connectAccount(e.target.value)}>
             <option hidden value="">
               Select Account
             </option>
@@ -55,7 +53,7 @@ export const PolkadotAccount = ({ setConnectedAccount }) => {
               </option>
             ))}
           </select>
-          <button onClick={disconnectAccount}>Disconnect</button>
+          <button onClick={disconnectAccount1}>Disconnect</button>
         </div>
       )}
     </div>
